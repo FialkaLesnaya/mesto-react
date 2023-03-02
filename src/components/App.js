@@ -1,44 +1,18 @@
-import './index.css';
-import logoPath from './images/logo.svg';
+import '../index.css';
+import Header from './Header';
+import Main from './Main';
+import Footer from './Footer';
 
 function App() {
   return (
     <div class="page">
       <div class="page__content">
 
-        <header class="header">
-          <a class="header__logo-link" href="#" target="_self">
-            <img class="header__logo" src={logoPath} alt="Логотип сайта Место" />
-          </a>
-        </header>
+        <Header></Header>
 
-        <main>
-          <section class="profile">
-            <div class="profile__avatar-wrapper">
-              <div class="profile__avatar-edit"></div>
-              <img class="profile__avatar" alt="Аватар пользователя" />
-            </div>
+        <Main></Main>
 
-            <div class="profile__info">
-              <div class="profile__name-container">
-                <h1 class="profile__name"></h1>
-
-                <button aria-label="Редактировать профиль" type="button" class="profile__edit-button"></button>
-              </div>
-
-              <p class="profile__position"></p>
-            </div>
-
-            <button type="button" class="profile__add-button"></button>
-          </section>
-
-          <section class="elements">
-          </section>
-        </main>
-
-        <footer class="footer">
-          <span class="footer__copyright">&copy; 2020 Mesto Russia</span>
-        </footer>
+        <Footer></Footer>
 
         <template id="card-template">
           <article class="elements__item">
@@ -155,3 +129,4 @@ function App() {
 }
 
 export default App;
+
