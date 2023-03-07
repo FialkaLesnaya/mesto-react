@@ -2,6 +2,7 @@ import '../index.css';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
+import PopupWithForm from './PopupWithForm';
 
 function App() {
   return (
@@ -13,6 +14,8 @@ function App() {
         <Main></Main>
 
         <Footer></Footer>
+
+        <PopupWithForm title="Редактировать профиль" name="edit-profile"></PopupWithForm>
 
         <template id="card-template">
           <article className="elements__item">
@@ -28,32 +31,6 @@ function App() {
           </article>
         </template>
 
-        <div className="popup" id="edit-profile">
-          <div className="popup__container">
-            <h2 className="popup__title">Редактировать профиль</h2>
-            <button aria-label="Close" className="popup__close" type="button"></button>
-
-            <form className="popup__body" name="edit-profile" noValidate>
-              <fieldset className="popup__fieldset">
-                <label className="popup__label">
-                  <input required placeholder="Введите имя" type="text" className="popup__input" id="name-input"
-                    name="name" minLength="2" maxLength="40" />
-
-                  <span className="popup__input-error name-input-error"></span>
-                </label>
-
-                <label className="popup__label">
-                  <input required placeholder="Введите ваш вид деятельности" type="text" className="popup__input"
-                    id="job-input" name="job" minLength="2" maxLength="200" />
-
-                  <span className="popup__input-error job-input-error"></span>
-                </label>
-
-                <button className="popup__save-button" type="submit">Сохранить</button>
-              </fieldset>
-            </form>
-          </div>
-        </div>
 
         <div className="popup" id="add-card">
           <div className="popup__container">
