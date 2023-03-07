@@ -3,6 +3,7 @@ import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
+import ImagePopup from './ImagePopup';
 
 function App() {
   return (
@@ -14,6 +15,8 @@ function App() {
         <Main></Main>
 
         <Footer></Footer>
+
+        <ImagePopup></ImagePopup>
 
         <PopupWithForm title="Редактировать профиль" name="edit-profile"></PopupWithForm>
 
@@ -56,16 +59,6 @@ function App() {
                 <button className="popup__save-button" type="submit">Создать</button>
               </fieldset>
             </form>
-          </div>
-        </div>
-
-        <div className="popup popup_image-overlay" id="image-details">
-          <div className="popup__image-container">
-            <button aria-label="Close" className="popup__close" type="button"></button>
-
-            <img className="popup__image" src="/" />
-
-            <p className="popup__subtitle"></p>
           </div>
         </div>
 
