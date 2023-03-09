@@ -1,4 +1,4 @@
-class Api {
+class ApiService {
     constructor(options) {
         this.baseUrl = options.baseUrl;
         this.headers = options.headers;
@@ -80,7 +80,7 @@ class Api {
     }
 }
 
-export const Api = new Api({
+export const Api = new ApiService({
     baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-59',
     headers: {
         authorization: '4f31cc87-619b-4c03-991e-9edd62906251',
