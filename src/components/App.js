@@ -59,7 +59,8 @@ function App() {
 
         <ImagePopup
           onClose={closeAllPopups}
-          card={selectedCard}></ImagePopup>
+          card={selectedCard}
+        ></ImagePopup>
 
         <PopupWithForm
           title="Редактировать профиль"

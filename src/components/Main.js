@@ -10,7 +10,6 @@ function Main(props) {
 
     useEffect(() => {
         Promise.all([Api.getCurrentUser(), Api.loadCards()])
-            // тут деструктурируете ответ от сервера, чтобы было понятнее, что пришло
             .then(([userData, userCards]) => {
                 setUserName(userData.name);
                 setUserDescription(userData.about);
@@ -18,12 +17,9 @@ function Main(props) {
                 setCards(userCards);
             })
             .catch(err => {
-                // тут ловим ошибку
                 console.log(`Ошибка загрузки изначальных данных ${err}`);
             });
     }, []);
-
-    console.log(cards);
 
     return (
         <main>
@@ -48,7 +44,12 @@ function Main(props) {
 
             <section className="elements">
                 {cards.map((item) => (
-                    <Card card={item} onDeleteCardClick={props.onDeleteCardClick} onCardClick={props.onCardClick}></Card>
+                    <Card
+                        key={item._id}
+                        card={item}
+                        onDeleteCardClick={props.onDeleteCardClick}
+                        onCardClick={props.onCardClick}>
+                    </Card>
                 ))}
             </section>
         </main>
