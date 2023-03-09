@@ -45,7 +45,10 @@ function App() {
           onEditAvatar={handleEditAvatarClick}
           onEditProfile={handleEditProfileClick}
           onAddPlace={handleAddPlaceClick}
+          onDeleteCardClick={handleDeleteCardClick}
         ></Main>
+
+
 
         <Footer></Footer>
 
@@ -127,21 +130,6 @@ function App() {
         >
           <button className="popup__save-button" type="submit">Да</button>
         </PopupWithForm>
-
-        <template id="card-template">
-          <article className="elements__item">
-            <div className="elements__trash"></div>
-            <img className="elements__image" src="/" />
-            <div className="elements__info">
-              <h2 className="elements__name" title=""></h2>
-              <div className="elements__like-container">
-                <button type="button" className="elements__like-button" onClick={handleDeleteCardClick}></button>
-                <span className="elements__like-count"></span>
-              </div>
-            </div>
-          </article>
-        </template>
-
       </div>
     </div>
   );
