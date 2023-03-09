@@ -28,6 +28,13 @@ function App() {
     setIsDeleteCardOpen(true);
   }
 
+  const closeAllPopups = () => {
+    setIsEditAvatarPopupOpen(false);
+    setIsEditProfilePopupOpen(false);
+    setIsAddPlacePopupOpen(false);
+    setIsDeleteCardOpen(false);
+  }
+
   return (
     <div className="page">
       <div className="page__content">
@@ -48,6 +55,7 @@ function App() {
           title="Редактировать профиль"
           name="edit-profile"
           isOpen={isEditProfilePopupOpen}
+          onClose={closeAllPopups}
         >
           <fieldset className="popup__fieldset">
             <label className="popup__label">
@@ -72,6 +80,7 @@ function App() {
           title="Обновить аватар"
           name="update-avatar"
           isOpen={isEditAvatarPopupOpen}
+          onClose={closeAllPopups}
         >
           <fieldset className="popup__fieldset">
             <label className="popup__label">
@@ -89,6 +98,7 @@ function App() {
           title="Новое место"
           name="add-card"
           isOpen={isAddPlacePopupOpen}
+          onClose={closeAllPopups}
         >
           <fieldset className="popup__fieldset">
             <label className="popup__label">
@@ -113,6 +123,7 @@ function App() {
           title="Вы уверены ?"
           name="delete-card"
           isOpen={isDeleteCardOpen}
+          onClose={closeAllPopups}
         >
           <button className="popup__save-button" type="submit">Да</button>
         </PopupWithForm>
