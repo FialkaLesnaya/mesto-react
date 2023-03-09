@@ -1,7 +1,7 @@
 function Footer() {
     return (
         <footer className="footer">
-            <span className="footer__copyright">&copy; 2020 Mesto Russia</span>
+            <span className="footer__copyright">&copy; 2023 Mesto Russia</span>
         </footer>
     )
 }
