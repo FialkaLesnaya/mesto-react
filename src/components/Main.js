@@ -6,10 +6,9 @@ import { CurrentUserContext } from "contexts/CurrentUserContext";
 function Main(props) {
   const [cards, setCards] = useState([]);
   const currentUser = useContext(CurrentUserContext);
-  
 
   useEffect(() => {
-    Promise.all([Api.loadCards()])
+    Api.loadCards()
       .then(([userCards]) => {
         setCards(userCards);
       })
@@ -29,13 +28,13 @@ function Main(props) {
           <img
             className="profile__avatar"
             alt="Аватар пользователя"
-            src={currentUser?.avatar}
+            src={currentUser.avatar}
           />
         </div>
 
         <div className="profile__info">
           <div className="profile__name-container">
-            <h1 className="profile__name">{currentUser?.name}</h1>
+            <h1 className="profile__name">{currentUser.name}</h1>
 
             <button
               aria-label="Редактировать профиль"
@@ -45,7 +44,7 @@ function Main(props) {
             ></button>
           </div>
 
-          <p className="profile__position">{currentUser?.about}</p>
+          <p className="profile__position">{currentUser.about}</p>
         </div>
 
         <button

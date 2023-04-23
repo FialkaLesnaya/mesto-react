@@ -6,7 +6,10 @@ import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup";
 import React, { useEffect, useState } from "react";
 import { Api } from "utils/Api";
-import { CurrentUserContext } from "contexts/CurrentUserContext";
+import {
+  CurrentUserContext,
+  currentUserObject,
+} from "contexts/CurrentUserContext";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
@@ -14,7 +17,7 @@ function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [isDeleteCardOpen, setIsDeleteCardOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState(currentUserObject);
 
   const handleEditAvatarClick = () => {
     setIsEditAvatarPopupOpen(true);
@@ -45,12 +48,12 @@ function App() {
   };
 
   useEffect(() => {
-    Promise.all([Api.getCurrentUser()])
+    Api.getCurrentUser()
       .then(([userData]) => {
         setCurrentUser(userData);
       })
       .catch((err) => {
-        console.log(`Ошибка загрузки изначальных данных ${err}`);
+        console.log(`Ошибка загрузки данных ${err}`);
       });
   }, []);
 

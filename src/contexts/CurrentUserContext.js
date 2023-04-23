@@ -1,9 +1,9 @@
 import React from "react";
 
-export const currentUser = {
+export const currentUserObject = {
   name: "",
   about: "",
   avatar: "",
 };
 
-export const CurrentUserContext = React.createContext(currentUser);
+export const CurrentUserContext = React.createContext(currentUserObject);
