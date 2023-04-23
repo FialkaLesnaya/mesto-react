@@ -7,7 +7,7 @@ function ImagePopup(props) {
             <div className="popup__image-container">
                 <button aria-label="Close" className="popup__close" type="button" onClick={props.onClose}></button>
 
-                <img className="popup__image" src={cardLink} />
+                <img className="popup__image" alt={cardName} src={cardLink} />
 
                 <p className="popup__subtitle">{cardName}</p>
             </div>

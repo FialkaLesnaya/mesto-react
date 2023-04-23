@@ -71,14 +71,14 @@ function App() {
         >
           <label className="popup__label">
             <input required placeholder="Введите имя" type="text" className="popup__input" id="name-input"
-              name="name" minLength="2" maxLength="40" />
+              name="name" minLength={2} maxLength={40} />
 
             <span className="popup__input-error name-input-error"></span>
           </label>
 
           <label className="popup__label">
             <input required placeholder="Введите ваш вид деятельности" type="text" className="popup__input"
-              id="job-input" name="job" minLength="2" maxLength="200" />
+              id="job-input" name="job" minLength={2} maxLength={200} />
 
             <span className="popup__input-error job-input-error"></span>
           </label>
@@ -108,7 +108,7 @@ function App() {
         >
           <label className="popup__label">
             <input required placeholder="Название" type="text" className="popup__input" name="name"
-              id="card-name-input" minLength="2" maxLength="30" />
+              id="card-name-input" minLength={2} maxLength={30} />
 
             <span className="popup__input-error card-name-input-error"></span>
           </label>

@@ -4,7 +4,7 @@ function Card(props) {
     return (
         <article className="elements__item">
             <div className="elements__trash" onClick={props.onDeleteCardClick}></div>
-            <img className="elements__image" src={item.link} onClick={() => props.onCardClick(item)} />
+            <img className="elements__image" alt={item.name} src={item.link} onClick={() => props.onCardClick(item)} />
             <div className="elements__info">
                 <h2 className="elements__name" title="">{item.name}</h2>
                 <div className="elements__like-container">
