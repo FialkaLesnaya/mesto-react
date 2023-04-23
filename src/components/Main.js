@@ -9,7 +9,7 @@ function Main(props) {
 
   useEffect(() => {
     Api.loadCards()
-      .then(([userCards]) => {
+      .then((userCards) => {
         setCards(userCards);
       })
       .catch((err) => {

@@ -49,7 +49,7 @@ function App() {
 
   useEffect(() => {
     Api.getCurrentUser()
-      .then(([userData]) => {
+      .then((userData) => {
         setCurrentUser(userData);
       })
       .catch((err) => {
