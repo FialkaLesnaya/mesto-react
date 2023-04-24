@@ -76,6 +76,16 @@ function App() {
     });
   }
 
+  function handleCardDelete(card) {
+    Api.deleteCard(card._id).then(() => {
+      setCards(
+        cards.filter((item) => {
+          return item._id !== card._id;
+        })
+      );
+    });
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -90,6 +100,7 @@ function App() {
             onCardClick={handleCardClick}
             cards={cards}
             onCardLike={handleCardLike}
+            onCardDelete={handleCardDelete}
           ></Main>
 
           <Footer></Footer>

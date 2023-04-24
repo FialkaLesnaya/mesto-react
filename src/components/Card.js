@@ -15,7 +15,7 @@ function Card(props) {
       {isOwn && (
         <div
           className="elements__trash"
-          onClick={props.onDeleteCardClick}
+          onClick={() => props.onCardDelete(item)}
         ></div>
       )}
       <img
@@ -29,7 +29,11 @@ function Card(props) {
           {item.name}
         </h2>
         <div className="elements__like-container">
-          <button type="button" className={cardLikeButtonClassName} onClick={() => props.onCardLike(item)}></button>
+          <button
+            type="button"
+            className={cardLikeButtonClassName}
+            onClick={() => props.onCardLike(item)}
+          ></button>
           <span className="elements__like-count">{item.likes.length}</span>
         </div>
       </div>
