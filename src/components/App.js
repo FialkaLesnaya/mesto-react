@@ -87,6 +87,13 @@ function App() {
     });
   }
 
+  function handleUpdateUser({ name, about }) {
+    Api.editProfile(name, about).then((user) => {
+      setCurrentUser({ name: name, about: about, avatar: user.avatar });
+      closeAllPopups();
+    });
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -111,6 +118,7 @@ function App() {
           <EditProfilePopup
             isOpen={isEditProfilePopupOpen}
             onClose={closeAllPopups}
+            onUpdateUser={handleUpdateUser}
           />
 
           <PopupWithForm
