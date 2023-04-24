@@ -4,18 +4,8 @@ import Card from "./Card";
 import { CurrentUserContext } from "contexts/CurrentUserContext";
 
 function Main(props) {
-  const [cards, setCards] = useState([]);
+  const cards = props.cards;
   const currentUser = useContext(CurrentUserContext);
-
-  useEffect(() => {
-    Api.loadCards()
-      .then((userCards) => {
-        setCards(userCards);
-      })
-      .catch((err) => {
-        console.log(`Ошибка загрузки изначальных данных ${err}`);
-      });
-  }, []);
 
   return (
     <main>
@@ -61,6 +51,7 @@ function Main(props) {
             card={item}
             onDeleteCardClick={props.onDeleteCardClick}
             onCardClick={props.onCardClick}
+            onCardLike={props.onCardLike}
           ></Card>
         ))}
       </section>
