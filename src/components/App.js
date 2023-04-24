@@ -10,6 +10,7 @@ import {
   CurrentUserContext,
   currentUserObject,
 } from "contexts/CurrentUserContext";
+import EditProfilePopup from "./EditProfilePopup";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
@@ -80,7 +81,7 @@ function App() {
     Api.deleteCard(card._id).then(() => {
       setCards(
         cards.filter((item) => {
-          return item._id !== card._id;
+          return item._id != card._id;
         })
       );
     });
@@ -107,43 +108,10 @@ function App() {
 
           <ImagePopup onClose={closeAllPopups} card={selectedCard}></ImagePopup>
 
-          <PopupWithForm
-            title="Редактировать профиль"
-            name="edit-profile"
+          <EditProfilePopup
             isOpen={isEditProfilePopupOpen}
             onClose={closeAllPopups}
-            buttonText="Сохранить"
-          >
-            <label className="popup__label">
-              <input
-                required
-                placeholder="Введите имя"
-                type="text"
-                className="popup__input"
-                id="name-input"
-                name="name"
-                minLength={2}
-                maxLength={40}
-              />
-
-              <span className="popup__input-error name-input-error"></span>
-            </label>
-
-            <label className="popup__label">
-              <input
-                required
-                placeholder="Введите ваш вид деятельности"
-                type="text"
-                className="popup__input"
-                id="job-input"
-                name="job"
-                minLength={2}
-                maxLength={200}
-              />
-
-              <span className="popup__input-error job-input-error"></span>
-            </label>
-          </PopupWithForm>
+          />
 
           <PopupWithForm
             title="Обновить аватар"
