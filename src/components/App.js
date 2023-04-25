@@ -11,6 +11,7 @@ import {
   currentUserObject,
 } from "contexts/CurrentUserContext";
 import EditProfilePopup from "./EditProfilePopup";
+import EditAvatarPopup from "./EditAvatarPopup";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
@@ -121,26 +122,10 @@ function App() {
             onUpdateUser={handleUpdateUser}
           />
 
-          <PopupWithForm
-            title="Обновить аватар"
-            name="update-avatar"
+          <EditAvatarPopup
             isOpen={isEditAvatarPopupOpen}
             onClose={closeAllPopups}
-            buttonText="Сохранить"
-          >
-            <label className="popup__label">
-              <input
-                required
-                placeholder="Ссылка на аватар"
-                type="url"
-                className="popup__input"
-                name="link"
-                id="avatar-link-input"
-              />
-
-              <span className="popup__input-error avatar-link-input-error"></span>
-            </label>
-          </PopupWithForm>
+          />
 
           <PopupWithForm
             title="Новое место"
