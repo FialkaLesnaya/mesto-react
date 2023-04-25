@@ -4,7 +4,7 @@ import Main from "./Main";
 import Footer from "./Footer";
 import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Api } from "utils/Api";
 import {
   CurrentUserContext,
