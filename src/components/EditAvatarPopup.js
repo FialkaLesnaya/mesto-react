@@ -8,7 +8,7 @@ function EditAvatarPopup(props) {
     e.preventDefault();
     props.onUpdateAvatar({
       // @ts-ignore
-      avatar: avatarRef.current?.value,
+      avatar: avatarRef.current.value,
     });
   }
 

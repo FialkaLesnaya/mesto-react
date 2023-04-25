@@ -51,7 +51,6 @@ function Main(props) {
             onDeleteCardClick={props.onDeleteCardClick}
             onCardClick={props.onCardClick}
             onCardLike={props.onCardLike}
-            onCardDelete={props.onCardDelete}
           ></Card>
         ))}
       </section>

@@ -15,7 +15,7 @@ function Card(props) {
       {isOwn && (
         <div
           className="elements__trash"
-          onClick={() => props.onCardDelete(item)}
+          onClick={() => props.onDeleteCardClick(item)}
         ></div>
       )}
       <img

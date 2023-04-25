@@ -21,6 +21,7 @@ function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [isDeleteCardOpen, setIsDeleteCardOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState(null);
+  const [deletedCard, setDeletedCard] = useState(null);
   const [currentUser, setCurrentUser] = useState(currentUserObject);
   const [cards, setCards] = useState([]);
 
@@ -36,7 +37,8 @@ function App() {
     setIsAddPlacePopupOpen(true);
   };
 
-  const handleDeleteCardClick = () => {
+  const handleDeleteCardClick = (card) => {
+    setDeletedCard(card);
     setIsDeleteCardOpen(true);
   };
 
@@ -50,6 +52,7 @@ function App() {
     setIsAddPlacePopupOpen(false);
     setIsDeleteCardOpen(false);
     setSelectedCard(null);
+    setDeletedCard(null);
   };
 
   useEffect(() => {
@@ -80,13 +83,14 @@ function App() {
     });
   }
 
-  function handleCardDelete(card) {
-    Api.deleteCard(card._id).then(() => {
+  function handleCardDeleteSubmit() {
+    Api.deleteCard(deletedCard._id).then(() => {
       setCards(
         cards.filter((item) => {
-          return item._id != card._id;
+          return item._id !== deletedCard._id;
         })
       );
+      closeAllPopups();
     });
   }
 
@@ -129,7 +133,6 @@ function App() {
             onCardClick={handleCardClick}
             cards={cards}
             onCardLike={handleCardLike}
-            onCardDelete={handleCardDelete}
           ></Main>
 
           <Footer></Footer>
@@ -157,7 +160,7 @@ function App() {
           <DeleteCardPopup
             isOpen={isDeleteCardOpen}
             onClose={closeAllPopups}
-            onCardDelete={handleCardDelete}
+            onCardDelete={handleCardDeleteSubmit}
           />
         </div>
       </div>
