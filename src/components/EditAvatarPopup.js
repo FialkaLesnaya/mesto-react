@@ -1,8 +1,18 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import PopupWithForm from "./PopupWithForm";
 import { CurrentUserContext } from "contexts/CurrentUserContext";
 
 function EditAvatarPopup(props) {
+  const avatarRef = useRef();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    props.onUpdateAvatar({
+      // @ts-ignore
+      avatar: avatarRef.current?.value,
+    });
+  }
+
   return (
     <PopupWithForm
       title="Обновить аватар"
@@ -10,6 +20,7 @@ function EditAvatarPopup(props) {
       isOpen={props.isOpen}
       onClose={props.onClose}
       buttonText="Сохранить"
+      onSubmit={handleSubmit}
     >
       <label className="popup__label">
         <input
@@ -19,6 +30,7 @@ function EditAvatarPopup(props) {
           className="popup__input"
           name="link"
           id="avatar-link-input"
+          ref={avatarRef}
         />
 
         <span className="popup__input-error avatar-link-input-error"></span>
