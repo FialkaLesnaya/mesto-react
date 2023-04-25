@@ -2,7 +2,6 @@ import "../index.css";
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
-import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup";
 import { useEffect, useState } from "react";
 import { Api } from "utils/Api";
@@ -78,45 +77,67 @@ function App() {
   function handleCardLike(card) {
     const isLiked = card.likes.some((i) => i._id === currentUser._id);
 
-    Api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
-      setCards((state) => state.map((c) => (c._id === card._id ? newCard : c)));
-    });
+    Api.changeLikeCardStatus(card._id, !isLiked)
+      .then((newCard) => {
+        setCards((state) =>
+          state.map((c) => (c._id === card._id ? newCard : c))
+        );
+      })
+      .catch((err) => {
+        console.log(`Ошибка загрузки данных ${err}`);
+      });
   }
 
   function handleCardDeleteSubmit() {
-    Api.deleteCard(deletedCard._id).then(() => {
-      setCards(
-        cards.filter((item) => {
-          return item._id !== deletedCard._id;
-        })
-      );
-      closeAllPopups();
-    });
+    Api.deleteCard(deletedCard._id)
+      .then(() => {
+        setCards(
+          cards.filter((item) => {
+            return item._id !== deletedCard._id;
+          })
+        );
+        closeAllPopups();
+      })
+      .catch((err) => {
+        console.log(`Ошибка загрузки данных ${err}`);
+      });
   }
 
   function handleUpdateUser({ name, about }) {
-    Api.editProfile(name, about).then((user) => {
-      setCurrentUser({ name: name, about: about, avatar: user.avatar });
-      closeAllPopups();
-    });
+    Api.editProfile(name, about)
+      .then((user) => {
+        setCurrentUser({ name: name, about: about, avatar: user.avatar });
+        closeAllPopups();
+      })
+      .catch((err) => {
+        console.log(`Ошибка загрузки данных ${err}`);
+      });
   }
 
   function handleUpdateAvatar({ avatar }) {
-    Api.updateAvatar(avatar).then((user) => {
-      setCurrentUser({
-        name: user.name,
-        about: user.about,
-        avatar: user.avatar,
+    Api.updateAvatar(avatar)
+      .then((user) => {
+        setCurrentUser({
+          name: user.name,
+          about: user.about,
+          avatar: user.avatar,
+        });
+        closeAllPopups();
+      })
+      .catch((err) => {
+        console.log(`Ошибка загрузки данных ${err}`);
       });
-      closeAllPopups();
-    });
   }
 
   function handleAddPlaceSubmit({ name, link }) {
-    Api.editCard(name, link).then((newCard) => {
-      setCards([newCard, ...cards]);
-      closeAllPopups();
-    });
+    Api.editCard(name, link)
+      .then((newCard) => {
+        setCards([newCard, ...cards]);
+        closeAllPopups();
+      })
+      .catch((err) => {
+        console.log(`Ошибка загрузки данных ${err}`);
+      });
   }
 
   return (
