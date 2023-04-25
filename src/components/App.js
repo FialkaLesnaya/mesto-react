@@ -12,6 +12,7 @@ import {
 } from "contexts/CurrentUserContext";
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
+import AddPlacePopup from "./AddPlacePopup";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
@@ -106,6 +107,13 @@ function App() {
     });
   }
 
+  function handleAddPlaceSubmit({ name, link }) {
+    Api.editCard(name, link).then((newCard) => {
+      setCards([newCard, ...cards]);
+      closeAllPopups();
+    });
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -139,41 +147,11 @@ function App() {
             onUpdateAvatar={handleUpdateAvatar}
           />
 
-          <PopupWithForm
-            title="Новое место"
-            name="add-card"
+          <AddPlacePopup
             isOpen={isAddPlacePopupOpen}
             onClose={closeAllPopups}
-            buttonText="Создать"
-          >
-            <label className="popup__label">
-              <input
-                required
-                placeholder="Название"
-                type="text"
-                className="popup__input"
-                name="name"
-                id="card-name-input"
-                minLength={2}
-                maxLength={30}
-              />
-
-              <span className="popup__input-error card-name-input-error"></span>
-            </label>
-
-            <label className="popup__label">
-              <input
-                required
-                placeholder="Ссылка на картинку"
-                type="url"
-                className="popup__input"
-                name="link"
-                id="link-input"
-              />
-
-              <span className="popup__input-error link-input-error"></span>
-            </label>
-          </PopupWithForm>
+            onAddPlace={handleAddPlaceSubmit}
+          />
 
           <PopupWithForm
             title="Вы уверены ?"
