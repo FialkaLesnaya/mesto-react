@@ -13,6 +13,7 @@ import {
 import EditProfilePopup from "./EditProfilePopup";
 import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
+import DeleteCardPopup from "./DeleteCardPopup";
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
@@ -153,13 +154,11 @@ function App() {
             onAddPlace={handleAddPlaceSubmit}
           />
 
-          <PopupWithForm
-            title="Вы уверены ?"
-            name="delete-card"
+          <DeleteCardPopup
             isOpen={isDeleteCardOpen}
             onClose={closeAllPopups}
-            buttonText="Да"
-          ></PopupWithForm>
+            onCardDelete={handleCardDelete}
+          />
         </div>
       </div>
     </CurrentUserContext.Provider>
